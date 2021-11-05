@@ -43,4 +43,10 @@
         android:label="fragment_profile2"
         tools:layout="@layout/fragment_profile2" />
 
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.farah.ecom.ui.login.login"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" />
+
 </navigation>
