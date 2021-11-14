@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 //floating action button
         binding.appBarMain.fab.setOnClickListener { view ->
-        val i = Intent(applicationContext, query::class.java)
+        val i = Intent(applicationContext, CartActivity::class.java)
             startActivity(i)
         }
 

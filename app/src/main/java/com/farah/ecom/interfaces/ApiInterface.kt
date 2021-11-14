@@ -13,7 +13,7 @@ interface ApiInterface {
 
     //this is the link between your app and api
     companion object{
-        var BASEURL = "https://modcom.pythonanywhere.com/api/"
+        var BASEURL = "https://bigboyfreezy.pythonanywhere.com/"
         fun create(): ApiInterface {
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())

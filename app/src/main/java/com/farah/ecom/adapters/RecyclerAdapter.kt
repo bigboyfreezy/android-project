@@ -1,6 +1,8 @@
 package com.farah.ecom.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.farah.ecom.R
+import com.farah.ecom.SingleActivity
 import com.farah.ecom.model.productmodel
 
 class RecyclerAdapter(var context: Context)://When you want to toast smthg without intent or activities
@@ -34,19 +37,36 @@ class RecyclerAdapter(var context: Context)://When you want to toast smthg witho
 
     //bind
     val item = productList[position]
-    title.text = item.title
-    desc.text = item.desc
-    date.text = item.cost
+    title.text = item.product_name
+    desc.text = item.product_desc
+    date.text = item.product_cost
 
-    Glide.with(context).load(item.image_url)
+    Glide.with(context).load("https://bigboyfreezy.pythonanywhere.com/static/" + item.image_url)
         .apply(RequestOptions().centerCrop())
         .into(image)
     //image.setImageResource(item.image)
 
+    holder.itemView.setOnClickListener {
+        val prefs: SharedPreferences = context.getSharedPreferences(
+            "store",
+            Context.MODE_PRIVATE
+        )
 
+        val editor: SharedPreferences.Editor = prefs.edit()
+        editor.putString("title", item.product_name)
+        editor.putString("description", item.product_desc)
+        editor.putString("product_cost", item.product_cost)
+        editor.putString("image_url", item.image_url)
+        editor.putString("product_id", item.product_id)
+        editor.apply()
+
+        val i = Intent(context, SingleActivity::class.java)
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(i)
 
 
     }
+}
 
 
 

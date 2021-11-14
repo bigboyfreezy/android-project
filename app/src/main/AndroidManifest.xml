@@ -14,6 +14,14 @@
         android:theme="@style/Theme.ECOM"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CartActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SingleActivity"
+            android:exported="true"
+            android:label="@string/title_activity_single"
+            android:theme="@style/Theme.ECOM.NoActionBar" />
+        <activity
             android:name=".query"
             android:exported="true" />
         <activity
