@@ -10,7 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:id="@+id/fname"
-        android:layout_height="match_parent"
+
+        android:layout_height="wrap_content"
          />
 
     <TextView
@@ -18,7 +19,25 @@
         android:paddingLeft="30dp"
         android:layout_width="match_parent"
         android:id="@+id/lname"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="227dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:text="CHANGE PASSWORD" />
+
+
+
+
+
+
 
 </LinearLayout>

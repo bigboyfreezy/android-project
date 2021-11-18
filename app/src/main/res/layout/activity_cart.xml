@@ -41,10 +41,27 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/recyclerView"
             tools:listitem="@layout/cart_single"
             />
+
+        <Button
+            android:id="@+id/checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:padding="5dp"
+            android:text="CHECKOUT" />
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:padding="5dp"
+            android:text="LOGIN" />
 
 
     </LinearLayout>

@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +22,8 @@ class SingleActivity : AppCompatActivity() {
         val prefs: SharedPreferences = getSharedPreferences("store",
             Context.MODE_PRIVATE)
         val qtty = findViewById(R.id.qtty) as EditText
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
+        val btn = findViewById(R.id.btn) as Button
+            btn.setOnClickListener {
 
             val cart_adapter = CartHelper(applicationContext)
             //get this item details from prefs

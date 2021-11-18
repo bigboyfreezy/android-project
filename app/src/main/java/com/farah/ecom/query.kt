@@ -5,10 +5,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.farah.ecom.interfaces.ApiInterface
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.JsonHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import cz.msebera.android.httpclient.entity.StringEntity
+import kotlinx.coroutines.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -26,39 +30,35 @@ class query : AppCompatActivity() {
 
 
         submit.setOnClickListener {
-            val client = AsyncHttpClient(true, 80, 443)
-            val jsonParams = JSONObject()
-            jsonParams.put("fname",fname.text.toString())
-            jsonParams.put("email", email.text.toString())
-            jsonParams.put("tel", tel.text.toString())
-            jsonParams.put("ask", addition.text.toString())
+            val apiInterface = ApiInterface.create()
+            val jsonObject = JSONObject()
+            jsonObject.put("fname",fname.text.toString())
+            jsonObject.put("email", email.text.toString())
+            jsonObject.put("tel", tel.text.toString())
+            jsonObject.put("ask", addition.text.toString())
 
-            val data = StringEntity(jsonParams.toString())
-            client.post(
-                this,
-                "http://10.0.2.2:6060/query",
-                data,
-                "application/json",
-                object : JsonHttpResponseHandler(){
-                    override fun onSuccess(
-                        statusCode: Int,
-                        headers: Array<out Header>?,
-                        response: JSONObject?
-                    ) {
-                        Toast.makeText(applicationContext, ""+response, Toast.LENGTH_SHORT).show()
+            val jsonObjectString = jsonObject.toString()
+            val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+            CoroutineScope(Dispatchers.IO).launch {
+              val response = apiInterface.makePayment(requestBody)
+                withContext(Dispatchers.Main){
+
+                    if(response.isSuccessful){
+                        Toast.makeText(applicationContext,"Query submited "+response, Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        Toast.makeText(applicationContext,response.code().toString(), Toast.LENGTH_LONG).show()
                     }
 
-                    override fun onFailure(
-                        statusCode: Int,
-                        headers: Array<out Header>?,
-                        throwable: Throwable?,
-                        errorResponse: JSONObject?
-                    ) {
-                        Toast.makeText(applicationContext, ""+errorResponse, Toast.LENGTH_SHORT).show()
-                    }
+
                 }
+            }
 
-            )
+
         }
+    }
+
+    fun processPayment(){
+
     }
 }

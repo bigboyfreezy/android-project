@@ -6,10 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/recyclerView"
-    tools:listitem="@layout/single_item"
-    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressbar"
+            style="@style/Widget.AppCompat.ProgressBar"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/error"
+            android:text="Opps Somethin Went Wrong!!"
+            android:gravity="center"
+            android:textColor="#C52323"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="190dp"/>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerView"
+            tools:listitem="@layout/single_item"
+            />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

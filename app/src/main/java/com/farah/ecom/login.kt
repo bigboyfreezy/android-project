@@ -17,22 +17,24 @@ class login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+//find the inputs
         val email = findViewById(R.id.email) as EditText
         val password = findViewById(R.id.password) as EditText
         val submit = findViewById(R.id.submit) as Button
 
+        //set a listener so when i click it executes the actions inside the listener
+
         submit.setOnClickListener {
             val client = AsyncHttpClient(true, 80, 443)
-            val jsonParams = JSONObject()
+            val jsonParams = JSONObject()//make the jsonobject/array inside a variable
             jsonParams.put("email", email.text.toString())
             jsonParams.put("password", password.text.toString())
 
-            val data = StringEntity(jsonParams.toString())
+            val data = StringEntity(jsonParams.toString())//convert it to a string
 
             client.post(
                 this,
-                "http://10.0.2.2:6060/login",
+                "https://bigboyfreezy.pythonanywhere.com/login",
                 data,
                 "application/json",
                 object : JsonHttpResponseHandler(){
@@ -46,6 +48,7 @@ class login : AppCompatActivity() {
                             val customer_id = response.optString("customer_id")
                             val fname = response.optString("fname")
                             val lname = response.optString("lname")
+                            val tel = response.optString("tel")
 
                             val prefs: SharedPreferences = applicationContext.getSharedPreferences("usser", MODE_PRIVATE)
 
@@ -53,6 +56,7 @@ class login : AppCompatActivity() {
                             editor.putString("customer_id", customer_id)
                             editor.putString("fname", fname)
                             editor.putString("lname", lname)
+                            editor.putString(" tel", tel)
                             editor.apply()
                             val i = Intent(applicationContext, MainActivity::class.java)
                             startActivity(i)

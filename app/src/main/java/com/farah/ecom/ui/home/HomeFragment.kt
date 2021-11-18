@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -42,6 +43,11 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val recyclerView: RecyclerView = binding.recyclerView
+        val progressbar = root.findViewById(R.id.progressbar) as ProgressBar
+        progressbar.visibility = View.VISIBLE
+
+        val error = root.findViewById(R.id.error) as TextView
+        error.visibility = View.GONE
 
         //productList = ArrayList()
         //productList.add(productmodel("UNGA", "2kg unga for Ugali", "2020/02/22", R.drawable.ic_action_home))
@@ -61,10 +67,14 @@ class HomeFragment : Fragment() {
                 response: Response<List<productmodel>>
             ) {
                 recyclerAdapter.setProductListItems(response.body()!!)
+                progressbar.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<List<productmodel>>, t: Throwable) {
                 Toast.makeText(activity, "ERROR" , Toast.LENGTH_LONG).show()
+                progressbar.visibility = View.GONE
+                error.visibility = View.VISIBLE
+
             }
         }
         )

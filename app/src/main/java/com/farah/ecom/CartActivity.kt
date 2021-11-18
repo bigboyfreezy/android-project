@@ -1,10 +1,13 @@
 package com.farah.ecom
 
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +22,39 @@ class CartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+
+        val checkout = findViewById(R.id.checkout) as Button
+        checkout.visibility = View.GONE
+
+        val login = findViewById(R.id.login) as Button
+        login.visibility = View.GONE
+
+
+
+        val prefs: SharedPreferences = applicationContext.getSharedPreferences("usser", MODE_PRIVATE)
+        val customer_id : String = prefs.getString("customer_id", "").toString()
+
+        if (customer_id.length==0){
+            checkout.visibility = View.GONE
+            login.visibility = View.VISIBLE
+        }
+        else{
+            checkout.visibility = View.VISIBLE
+            login.visibility = View.GONE
+        }
+
+        login.setOnClickListener {
+            val i = Intent(applicationContext, com.farah.ecom.login::class.java)
+            startActivity(i)
+            finish()
+        }
+        checkout.setOnClickListener {
+            val i = Intent(applicationContext, Payment::class.java)
+            startActivity(i)
+            finish()
+        }
+
+
         //the adapter does not have a data
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         CartAdapter = CartAdapter(applicationContext)

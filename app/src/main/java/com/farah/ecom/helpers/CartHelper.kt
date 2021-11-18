@@ -3,12 +3,22 @@ package com.farah.ecom.helpers
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.farah.ecom.MainActivity
+import com.farah.ecom.interfaces.ApiInterface
 import com.farah.ecom.model.CartModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 class CartHelper(context: Context): SQLiteOpenHelper(context,
     DATABASE_NAME, null,  2) {
@@ -191,6 +201,74 @@ class CartHelper(context: Context): SQLiteOpenHelper(context,
 
     }
 
+    fun getAllProcess(){
+
+        val db = this.readableDatabase
+        val result: Cursor = db.rawQuery("select * from " + TABLE_NAME, null)
+    //so i first got the products from the SQLite Database
+
+        while (result.moveToNext()){
+            val product_name = result.getString(1)
+            val product_qtty = result.getString(2)
+            val product_cost = result.getString(3)
+            val total_price = result.getString(4)
+            val all_total_price = finalprice()
+
+
+            Retromakeorder(product_name,product_qtty,product_cost,total_price,all_total_price)
+            //Placed the values in a function which i am going to call retrofit for the posting
+            // use retrofit to send API
+            // To call a retrofit function ******
+        }
+
+
+
+    }
+    //so this function i put the values as a parameter now that i have them
+    fun Retromakeorder(product_name:String,product_qtty:String,product_cost:String,total_price:String,all_total_price:String){
+            val order_code = "ARF54S"//created an order code
+
+        val prefs: SharedPreferences = context1.getSharedPreferences("usser",
+            AppCompatActivity.MODE_PRIVATE//the tel was in the preference so i get hem from the preference
+        )
+        val tel = prefs.getString("tel","")
+        val apiInterface = ApiInterface.create()
+        val jsonObject = JSONObject()
+        //and now i insert the product in the cart that i have extracted from SQLite and the tel from prefs into an object now for posting i to the dbase
+        jsonObject.put("product_name", product_name)
+        jsonObject.put("product_qtty", product_qtty)
+        jsonObject.put("product_cost", product_cost)
+        jsonObject.put("total_price", total_price)
+        jsonObject.put("all_total_price", all_total_price)
+        jsonObject.put("order_code", order_code)
+        jsonObject.put("tel", tel)
+
+
+        //convert above json object to string
+        val jsonObjectString = jsonObject.toString()
+
+        //we use kotlin coroutines...used to run asynchronous services
+        //A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously
+        //we create a request body
+        val requestBody = jsonObjectString.toRequestBody("appication/json".toMediaTypeOrNull())
+        CoroutineScope(Dispatchers.IO).launch {
+            //above request body post it to make payment
+
+            val response = apiInterface.processorder(requestBody)
+            withContext(Dispatchers.Main){
+                if (response.isSuccessful){
+                    Toast.makeText(context1,"Check Your Phone to Complete Payment "+response, Toast.LENGTH_LONG).show()
+
+                }
+                else{
+                    Toast.makeText(context1,response.code().toString(), Toast.LENGTH_LONG).show()
+                }
+            }
+
+        }
+
+
+    }
 
 
 
