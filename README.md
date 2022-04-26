@@ -201,7 +201,7 @@ class RecyclerAdapter(var context: Context)://When you want to toast smthg witho
 
 
 
-
+        //Here is where you use loop j o retrivethe data from the api and pass it into the recycler
 
 
 
