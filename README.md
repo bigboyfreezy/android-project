@@ -1,6 +1,6 @@
 # STEPS TO SET UP A RECYCLER VIEW
 RecyclerView is the ViewGroup that contains the views corresponding to your data.
-##Steps For reating a recycler view
+## Steps For reating a recycler view
 1.Create A model. A model is a file that recieves and holds data from the API/Server.
 Copy this model
 
