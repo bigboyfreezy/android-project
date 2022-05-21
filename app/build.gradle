@@ -57,6 +57,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     //We get the image name from api, glide
     implementation 'com.github.bumptech.glide:glide:4.4.0'
+    //Gson to co
+    implementation  'com.google.code.gson:gson:2.8.6'
 
 
     testImplementation 'junit:junit:4.+'

@@ -72,6 +72,7 @@ class login : Fragment() {
                                 val customer_id = response.optString("customer_id")
                                 val fname = response.optString("fname")
                                 val lname = response.optString("lname")
+                                val tel = response.optString("tel")
 
                                 val prefs: SharedPreferences? = activity?.getSharedPreferences(
                                     "usser",
@@ -82,6 +83,7 @@ class login : Fragment() {
                                 editor.putString("customer_id", customer_id)
                                 editor.putString("fname", fname)
                                 editor.putString("lname", lname)
+                                editor.putString("tel", tel)
                                 editor.apply()
                                 val i = Intent(activity, MainActivity::class.java)
                                 startActivity(i)

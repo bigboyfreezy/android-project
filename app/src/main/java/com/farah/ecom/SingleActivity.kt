@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -23,6 +24,7 @@ class SingleActivity : AppCompatActivity() {
             Context.MODE_PRIVATE)
         val qtty = findViewById(R.id.qtty) as EditText
         val btn = findViewById(R.id.btn) as Button
+
             btn.setOnClickListener {
 
             val cart_adapter = CartHelper(applicationContext)

@@ -56,7 +56,7 @@ class login : AppCompatActivity() {
                             editor.putString("customer_id", customer_id)
                             editor.putString("fname", fname)
                             editor.putString("lname", lname)
-                            editor.putString(" tel", tel)
+                            editor.putString("tel", tel)
                             editor.apply()
                             val i = Intent(applicationContext, MainActivity::class.java)
                             startActivity(i)

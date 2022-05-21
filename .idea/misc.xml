@@ -7,11 +7,13 @@
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_changepassword.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_orderpro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_payment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_query.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_single.xml" value="0.2" />
-        <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/app_bar_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/activity_test.xml" value="0.25" />
+        <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/app_bar_main.xml" value="0.25" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/cart_single.xml" value="0.2" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/content_scrolling.xml" value="0.18" />
@@ -26,10 +28,13 @@
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/fragment_settings.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/fragment_slideshow.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/order_single.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/product.xml" value="0.18703703703703703" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/layout/single_item.xml" value="0.1" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/menu/cart.xml" value="0.2" />
         <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/menu/main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Bridcom/Downloads/ECOM/app/src/main/res/menu/menu_single.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

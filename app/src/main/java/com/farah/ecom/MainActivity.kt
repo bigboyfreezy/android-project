@@ -40,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
 
         val navView: NavigationView = binding.navView
+        //   val fname1 = fname
+        //        val lname1 = lname
+        //        val email1 = email
+        //        val password1 = password
+        //        val confirm_password1 = confirm_password
+        //        val phone1 = phone
+        //        val submit = findViewById(R.id.submit) as MaterialButton
 
 
 
@@ -74,11 +81,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
+
 //handle options menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_logout){

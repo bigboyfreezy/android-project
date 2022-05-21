@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -45,6 +46,8 @@ class HomeFragment : Fragment() {
         val recyclerView: RecyclerView = binding.recyclerView
         val progressbar = root.findViewById(R.id.progressbar) as ProgressBar
         progressbar.visibility = View.VISIBLE
+
+
 
         val error = root.findViewById(R.id.error) as TextView
         error.visibility = View.GONE
